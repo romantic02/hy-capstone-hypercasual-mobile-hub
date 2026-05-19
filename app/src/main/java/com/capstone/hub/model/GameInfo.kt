@@ -1,6 +1,8 @@
 package com.capstone.hub.model
 
+import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
+import com.capstone.hub.R
 
 data class GameInfo(
     val id: Int,
@@ -9,17 +11,19 @@ data class GameInfo(
     val description: String,
     val packageName: String,
     val accentColor: Color,
+    @DrawableRes val iconResId: Int? = null,
 )
 
 object GameCatalog {
     val games: List<GameInfo> = listOf(
         GameInfo(
             id = 1,
-            title = "게임 1",
-            developer = "팀원 A",
-            description = "게임 설명을 여기에 입력하세요.",
-            packageName = "com.capstone.game1",
+            title = "Tap Blast: Drop & Merge",
+            developer = "본인 (테스트)",
+            description = "탭·드롭·머지 하이퍼캐주얼",
+            packageName = "com.tapblast.dropmerge",
             accentColor = Color(0xFF5C6BC0),
+            iconResId = R.drawable.ic_game_tap_blast,
         ),
         GameInfo(
             id = 2,

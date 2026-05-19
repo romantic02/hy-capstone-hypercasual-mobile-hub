@@ -1,23 +1,21 @@
 package com.capstone.hub.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -25,13 +23,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -86,12 +85,8 @@ fun HubScreen() {
                 modifier = Modifier.fillMaxSize(),
             ) {
                 items(games, key = { it.id }) { game ->
-                    val installed = remember(game.packageName) {
-                        GameLauncher.isInstalled(context, game.packageName)
-                    }
                     GameCard(
                         game = game,
-                        installed = installed,
                         onClick = { GameLauncher.launchWithFeedback(context, game) },
                     )
                 }
@@ -103,84 +98,62 @@ fun HubScreen() {
 @Composable
 private fun GameCard(
     game: GameInfo,
-    installed: Boolean,
     onClick: () -> Unit,
 ) {
-    Card(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(180.dp)
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Column(
+        Card(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(14.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
+                .fillMaxWidth()
+                .aspectRatio(1f),
+            shape = RoundedCornerShape(16.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(
-                    modifier = Modifier
-                        .size(36.dp)
-                        .clip(CircleShape)
-                        .background(game.accentColor),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(
-                        text = game.id.toString(),
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
-                    )
-                }
-                Spacer(modifier = Modifier.width(8.dp))
-                InstallBadge(installed = installed)
-            }
-
-            Column {
-                Text(
-                    text = game.title,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-                Text(
-                    text = game.developer,
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = game.description,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.75f),
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                )
+            Box(modifier = Modifier.fillMaxSize()) {
+                GameCardBackground(game = game)
             }
         }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = game.title,
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.SemiBold,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
     }
 }
 
 @Composable
-private fun InstallBadge(installed: Boolean) {
-    val (label, bg, fg) = if (installed) {
-        Triple("설치됨", Color(0xFFE8F5E9), Color(0xFF2E7D32))
+private fun GameCardBackground(game: GameInfo) {
+    if (game.iconResId != null) {
+        Image(
+            painter = painterResource(game.iconResId),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+        )
     } else {
-        Triple("미설치", Color(0xFFFFEBEE), Color(0xFFC62828))
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(game.accentColor),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = game.id.toString(),
+                color = Color.White.copy(alpha = 0.85f),
+                fontWeight = FontWeight.Bold,
+                fontSize = 40.sp,
+            )
+        }
     }
-    Text(
-        text = label,
-        modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(bg)
-            .padding(horizontal = 8.dp, vertical = 4.dp),
-        color = fg,
-        style = MaterialTheme.typography.labelSmall,
-        fontWeight = FontWeight.Medium,
-    )
 }
+

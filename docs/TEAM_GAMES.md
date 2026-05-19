@@ -4,7 +4,7 @@
 
 | 슬롯 | 게임명 | 담당 | applicationId (패키지명) | 저장소 URL | 상태 |
 |------|--------|------|---------------------------|------------|------|
-| 1 | (미정) | | `com.capstone.game1` | | 대기 |
+| 1 | Tap Blast: Drop & Merge | 본인 | `com.tapblast.dropmerge` | `Tap-Blast-Drop-Merge` | 테스트 중 |
 | 2 | (미정) | | `com.capstone.game2` | | 대기 |
 | 3 | (미정) | | `com.capstone.game3` | | 대기 |
 | 4 | (미정) | | `com.capstone.game4` | | 대기 |
@@ -14,7 +14,14 @@
 1. **applicationId** — `build.gradle`의 `applicationId` (확정 후 변경 금지 권장)
 2. **게임 제목·한 줄 설명** — 허브 카드 UI용
 3. **담당자 이름**
-4. **(선택) 게임 저장소 URL** — 개별 게임은 별도 repo 권장
+4. **(선택) 게임 아이콘** — PNG **1024×1024, 여백 없이 꽉 찬 정사각형**, 투명 배경은 아이콘 실루엣 밖만 → `drawable/ic_game_슬롯.png`
+5. **(선택) 게임 저장소 URL** — 개별 게임은 별도 repo 권장
+
+### 아이콘 등록 (허브 담당자)
+
+1. PNG를 `drawable/`에 넣기 (파일명: 소문자·숫자·밑줄만, 예: `ic_game_tap_blast.png`)
+2. `GameInfo.kt` 해당 슬롯에 `iconResId = R.drawable.ic_game_tap_blast` 추가
+3. 아이콘 없으면 번호 배지(기본)로 표시됨
 
 ## 반영 체크리스트 (허브 담당자)
 
