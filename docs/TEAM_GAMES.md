@@ -5,8 +5,8 @@
 | 슬롯 | 게임명 | 담당 | applicationId (패키지명) | 저장소 URL | 상태 |
 |------|--------|------|---------------------------|------------|------|
 | 1 | Tap Blast: Drop & Merge | 본인 | `com.tapblast.dropmerge` | `Tap-Blast-Drop-Merge` | 테스트 중 |
-| 2 | (미정) | | `com.capstone.game2` | | 대기 |
-| 3 | (미정) | | `com.capstone.game3` | | 대기 |
+| 2 | Chrono Cat | 팀원 | `com.hyhyper.chronocat` | | 연동됨 |
+| 3 | Slime Dash 3D | 팀원 | `com.DefaultCompany.SlimeDash3D` | | 연동됨 |
 | 4 | (미정) | | `com.capstone.game4` | | 대기 |
 
 ## 팀원이 제출할 정보

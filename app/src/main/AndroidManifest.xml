@@ -3,8 +3,8 @@
 
     <queries>
         <package android:name="com.tapblast.dropmerge" />
-        <package android:name="com.capstone.game2" />
-        <package android:name="com.capstone.game3" />
+        <package android:name="com.hyhyper.chronocat" />
+        <package android:name="com.DefaultCompany.SlimeDash3D" />
         <package android:name="com.capstone.game4" />
     </queries>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HY 하이퍼캐주얼 허브</string>
+    <string name="app_name">HYPER CASUAL</string>
     <string name="subtitle">모바일 게임 통합 런처</string>
-    <string name="not_installed">앱이 설치되어 있지 않습니다.\n팀원 APK를 먼저 설치해 주세요.</string>
+    <string name="not_installed">앱이 설치되어 있지 않습니다.\nAPK를 먼저 설치해 주세요.</string>
     <string name="launch_failed">게임을 실행할 수 없습니다.</string>
 </resources>

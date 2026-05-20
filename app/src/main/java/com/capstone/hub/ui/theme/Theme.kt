@@ -8,13 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val LightColors = lightColorScheme(
-    primary = Color(0xFF1A237E),
+    primary = HubColors.HeaderRed,
     onPrimary = Color.White,
-    secondary = Color(0xFF3949AB),
-    background = Color(0xFFF5F7FF),
-    surface = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
+    secondary = HubColors.FrameYellow,
+    background = HubColors.OuterBackground,
+    surface = HubColors.PanelWhite,
+    onBackground = HubColors.BorderBlack,
+    onSurface = HubColors.BorderBlack,
 )
 
 private val DarkColors = darkColorScheme(

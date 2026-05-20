@@ -3,8 +3,6 @@ package com.capstone.hub.launcher
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.widget.Toast
-import com.capstone.hub.R
 import com.capstone.hub.model.GameInfo
 
 sealed class LaunchResult {
@@ -37,22 +35,6 @@ object GameLauncher {
                 context.startActivity(launchIntent)
                 LaunchResult.Success
             }
-        }
-    }
-
-    fun launchWithFeedback(context: Context, game: GameInfo) {
-        when (launch(context, game)) {
-            LaunchResult.Success -> Unit
-            LaunchResult.NotInstalled -> Toast.makeText(
-                context,
-                context.getString(R.string.not_installed),
-                Toast.LENGTH_LONG,
-            ).show()
-            LaunchResult.Failed -> Toast.makeText(
-                context,
-                context.getString(R.string.launch_failed),
-                Toast.LENGTH_SHORT,
-            ).show()
         }
     }
 }
