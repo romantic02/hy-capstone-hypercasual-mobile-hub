@@ -7,7 +7,7 @@
 | 1 | Tap Blast: Drop & Merge | 본인 | `com.tapblast.dropmerge` | `Tap-Blast-Drop-Merge` | 테스트 중 |
 | 2 | Chrono Cat | 팀원 | `com.hyhyper.chronocat` | | 연동됨 |
 | 3 | Slime Dash 3D | 팀원 | `com.DefaultCompany.SlimeDash3D` | | 연동됨 |
-| 4 | (미정) | | `com.capstone.game4` | | 대기 |
+| 4 | Sword Rush: Hold Action | 팀원 | `com.MySWCapstone.Sword_Rush` | | 연동됨 |
 
 ## 팀원이 제출할 정보
 
@@ -28,4 +28,4 @@
 - [ ] `docs/TEAM_GAMES.md` 표 업데이트
 - [ ] `app/.../model/GameInfo.kt` 수정
 - [ ] `app/src/main/AndroidManifest.xml` `<queries>` 수정
-- [ ] 실기기에서 4게임 「설치됨」 및 실행 확인
+- [x] 실기기에서 4게임 「설치됨」 및 실행 확인

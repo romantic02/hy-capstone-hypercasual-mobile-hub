@@ -46,11 +46,12 @@ object GameCatalog {
         ),
         GameInfo(
             id = 4,
-            title = "게임 4",
-            developer = "팀원 D",
-            description = "게임 설명을 여기에 입력하세요.",
-            packageName = "com.capstone.game4",
+            title = "Sword Rush:\nHold Action",
+            developer = "팀원",
+            description = "Sword Rush: Hold Action",
+            packageName = "com.MySWCapstone.Sword_Rush",
             accentColor = HubColors.Slot4,
+            iconResId = R.drawable.ic_game_slot4,
         ),
     )
 }
